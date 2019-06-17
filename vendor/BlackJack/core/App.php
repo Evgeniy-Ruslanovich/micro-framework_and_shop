@@ -4,13 +4,10 @@ namespace BlackJack;
 
 Class App
 {
-    public static $app;//это будет типа контейнер свойств.. ну мало ли какие-то параметры записать
+    public $properties;
     public function __construct()
     {
-
-        echo trim($_SERVER['QUERY_STRING'],'/') . '<br>';
-        self::$app = Registry::GetInstance();
-        //$reg2 = Registry::GetInstance();
-
+        $this->properties = Registry::getInstance();
+        $this->properties->setPropertiesFromArray(include CONFIG_DIR . '/params.php');
     }
 }

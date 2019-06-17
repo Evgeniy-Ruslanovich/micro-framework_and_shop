@@ -6,7 +6,7 @@ trait tSingleton
 {
     private static $instance;
 
-    public static function GetInstance(){
+    public static function getInstance(){
         if(self::$instance === null){
             self::$instance = new self();
         }

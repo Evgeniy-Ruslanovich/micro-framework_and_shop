@@ -4,17 +4,23 @@ namespace BlackJack;
 
 class Registry
 {
-    use tSingleton;//добавляет метод ::GetInstance() возвращающий единственный экземпляр класса
+    use tSingleton;//добавляет метод ::getInstance() возвращающий единственный экземпляр класса
 
-    public static $properties = [];
-    public static function setProperty($name,$value)
+    public $properties = [];
+
+    public function setProperty($name,$value)
     {
-        self::$properties[$name] = $value;
+        $this->properties[$name] = $value;
     }
     public function getProperty($name)
     {
-        if(isset(self::$properties[$name])){
-            return self::$properties[$name];
+        if(isset($this->properties[$name])){
+            return $this->properties[$name];
         }
+    }
+    //Получает массив параметров, и доавляет их к себе. Пригодится, чтоб взять настройки из файла
+    public function setPropertiesFromArray($array)
+    {
+        $this->properties = array_merge($this->properties,$array);
     }
 }
