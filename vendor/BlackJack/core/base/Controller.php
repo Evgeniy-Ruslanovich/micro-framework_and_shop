@@ -9,8 +9,8 @@ abstract class Controller
     public $prefix;
     public $view;
     public $model;
-    public $outputData;//данные, которые мы передаем из контроллера в видъ
-    public $metaData;//метаданные страницы - title, description, keywords
+    public $outputData = [];//данные, которые мы передаем из контроллера в видъ
+    public $metaData = ['title' => '', 'description' => '', 'keywords' => ''];//метаданные страницы - title, description, keywords
 
     public function __construct($route)
     {
@@ -22,4 +22,14 @@ abstract class Controller
         $this->model = $route['controller'];//модель по умолчанию называется также, как и котроллер
     }
 
+    public function setOutputData($outputData)
+    {
+        $this->outputData = $data;
+    }
+    public function setMetaData($title = '', $description = '', $keywords = '')
+    {
+        $this->metaData['title'] = $title;
+        $this->metaData['description'] = $description;
+        $this->metaData['keywords'] = $keywords;
+    }
 }
