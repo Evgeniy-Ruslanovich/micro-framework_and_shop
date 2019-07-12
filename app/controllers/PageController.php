@@ -1,7 +1,7 @@
 <?php
 namespace app\controllers;
 
-class PageController
+class PageController extends AppController
 {
     public function defaultAction(){
         echo "<h2>Привет, я Контроллер просмотра страниц</h2>";

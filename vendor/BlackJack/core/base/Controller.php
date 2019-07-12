@@ -8,6 +8,7 @@ abstract class Controller
     public $action;
     public $prefix;
     public $view;
+    public $layout;
     public $model;
     public $outputData = [];//данные, которые мы передаем из контроллера в видъ
     public $metaData = ['title' => '', 'description' => '', 'keywords' => ''];//метаданные страницы - title, description, keywords
@@ -24,12 +25,17 @@ abstract class Controller
 
     public function setOutputData($outputData)
     {
-        $this->outputData = $data;
+        $this->outputData = $outputData;
     }
     public function setMetaData($title = '', $description = '', $keywords = '')
     {
         $this->metaData['title'] = $title;
         $this->metaData['description'] = $description;
         $this->metaData['keywords'] = $keywords;
+    }
+    public function getView()
+    {
+        $viewObject = new View($this->route, $this->metaData, $this->layout, $this->view);
+        $viewObject->render($this->outputData);
     }
 }

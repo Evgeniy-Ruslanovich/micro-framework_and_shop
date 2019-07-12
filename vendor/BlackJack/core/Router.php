@@ -28,23 +28,20 @@ class Router
                 $action = self::$route['action'] . 'Action';
                 if(\method_exists($objectController,$action)){
                     $objectController->$action();
+                    $objectController->getView();//Все, вызываем вьюшку, финита ля комедия
                 } else {
-                    echo "Метод {$controller}->{$action} не найден";
+                    throw new \Exception("Метод {$controller}->{$action} не найден", 500);
                 }
             } else {
-                echo "Класс контроллера $controller не найден";
-                //throw new \Exception("Страница не найдена", 404);
+                throw new \Exception("Контроллер {$controller} не найден", 500);
             }
         } else {
-            //echo "NO";
             throw new \Exception("Страница не найдена", 404);
         }
     }
     public static function matchRoute($url)
     {
-        /*echo $url;
-        return true;*/
-        //debug_arr(self::$routes);
+        $url = self::removeGetParams($url);
         foreach (self::$routes as $regexp => $route) {//роут это то, что мы передали в правиле изначально. Там либо что-то есть, либо пустой пассив
             //echo "<br>ПРоверка строки \"" . $url . "\" на парттерн \"" . $pattern . "\"<br>";
             if(\preg_match("#{$regexp}#", $url, $matches)){
@@ -74,13 +71,30 @@ class Router
     }
 
     //CamelCase
-    protected static function upperCamelCase($string){
+    protected static function upperCamelCase($string)
+    {
         $string = str_replace(' ','',ucwords(str_replace('-',' ',$string)));
         return $string;
     }
     //camelCase
-    protected static function lowerCamelCase($string){
+    protected static function lowerCamelCase($string)
+    {
         $string = \lcfirst(self::upperCamelCase($string));
         return $string;
+    }
+    //убирает гет-параметры из строки запроса, которая передается в роутинг. Сами параметры никуда не денутся, и будут доступны в $_GET
+    protected static function removeGetParams($url)
+    {
+        echo "<br>До обработки<br>"; var_dump($url);
+        if($url){
+            $url = trim(\stristr($url,'&',true),'/');
+            if( strpos($url,'=') ){
+
+                echo "<br>Сработало<br>";
+                $url = '';
+            }
+        }
+        echo "<br>После обработки<br>"; var_dump($url);
+        return $url;
     }
 }
