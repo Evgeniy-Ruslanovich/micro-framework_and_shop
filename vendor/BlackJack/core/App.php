@@ -12,6 +12,7 @@ Class App
         $this->properties = Registry::getInstance();
         $this->properties->setPropertiesFromArray(include CONFIG_DIR . '/params.php');
         new ErrorHandler();
+        //$R = Db::getInstance();
         $query = trim($_SERVER['QUERY_STRING'],'/');
         /*echo 'Запрос УРЛ: ' . $query . '<br>';
         \var_dump($query);

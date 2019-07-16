@@ -7,6 +7,12 @@ class AppController extends \BlackJack\base\Controller
         parent::__cunstruct($route);
         debug_arr($route);
     }*/
+
+    public function __construct($route){
+        parent:: __construct($route);
+        $model = new \app\models\AppModel();
+    }
+
     public function defaultAction(){
         /*echo "<h2>Привет, я МейнКонтроллер</h2>";
         echo $this->view;

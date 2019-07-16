@@ -1,5 +1,7 @@
 {
-    "require": {},
+    "require": {
+        "gabordemooij/redbean": "^5.3"
+    },
     "autoload": {
         "psr-4":{
             "BlackJack\\":"vendor/BlackJack/core",

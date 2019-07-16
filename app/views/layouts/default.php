@@ -11,5 +11,12 @@
     <body>
         <h3>Лейаут по умолчанию</h3>
         <?=$content?>
+        <?php
+        $logs = \RedBeanPHP\R::getDatabaseAdapter()
+            ->getDatabase()
+            ->getLogger();
+
+            debug_arr( $logs);
+        ?>
     </body>
 </html>

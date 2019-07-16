@@ -85,16 +85,16 @@ class Router
     //убирает гет-параметры из строки запроса, которая передается в роутинг. Сами параметры никуда не денутся, и будут доступны в $_GET
     protected static function removeGetParams($url)
     {
-        echo "<br>До обработки<br>"; var_dump($url);
+        //echo "<br>До обработки<br>"; var_dump($url);
         if($url){
             $url = trim(\stristr($url,'&',true),'/');
+            //echo "<br>после стрстр<br>"; var_dump($url);
             if( strpos($url,'=') ){
-
-                echo "<br>Сработало<br>";
+                //echo "<br>Сработало<br>";
                 $url = '';
             }
         }
-        echo "<br>После обработки<br>"; var_dump($url);
+        //echo "<br>После обработки<br>"; var_dump($url);
         return $url;
     }
 }
