@@ -13,7 +13,7 @@ class Db
         /*\RedBeanPHP\*/R::setup($config['dsn'],$config['user'],$config['password']);
         $connect = /*\RedBeanPHP\*/R::testConnection();
         if($connect){
-            echo "<b>Соединились!</b>";
+            //echo "<b>Соединились!</b>";
             /*\RedBeanPHP\*/R::freeze(true);
             if(DEBUG_MODE){
                 /*\RedBeanPHP\*/R::debug(true,1);

@@ -14,11 +14,11 @@ class MainController extends AppController
         //echo __METHOD__;
         $this->setMetaData('МейнКонтроллер','описание','Ключевые слова');
         $this->setOutputData(['name' => 'Vasya']);
-        $imperors = R::findAll('test');
+        //$imperors = R::findAll('test');
         //\debug_arr($imperors);
-        foreach ($imperors as  $imperor) {
+        /*foreach ($imperors as  $imperor) {
             echo "<h4>{$imperor->id} {$imperor->name}</h4>";
-        }
+        }*/
     /*    $cache = \BlackJack\Cache::getInstance();
         $cache->set('test',[1=>'bla',2=>'bla2']);
         $test_cache = $cache->get('test');

@@ -46,7 +46,7 @@ class View
             $layoutFile = APP . "/views/layouts/" . $this->layout . ".php";
             if(is_file($layoutFile)){
                 //echo "<br> файл лейаута: " . $layuotFile . "<br>";
-                $metatags = $this->makeMetaTags();
+                //$metatags = $this->makeMetaTags();
                 include $layoutFile;
             } else {
                 throw new \Exception("Не найден файл Шаблона {$layoutFile}", 500);
